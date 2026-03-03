@@ -9,24 +9,30 @@
 
 body{
 	text-align: center;
+ 	display: flex;
+    justify-content: center;  /* по горизонталі */
+    align-items: center;      /* по вертикалі */
 }
 
-.cave{
-	position: relative;
+#cave{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 	width: 200px;
 	height: 400px;
-	background-color: grey;
+	background-color: lightgrey;
 	border: solid 3px black;
 }
 
-.lift{
-	background-color: lightgrey;
+#lift{
+	position: absolute;
+	background-color: grey;
 	width: 180px;
 	height: 80px;
 	position: absolut;
+	margin: 10px;
+	bottom: 0px;
 }
 
 .l{
@@ -47,18 +53,31 @@ body{
 
 <h1 class="l">🛗<b>Ліфт</b></h1>
 
-<div class="cave">
+<div id="cave">
 
-	<div class="lift"></div>
+	<div id="lift"></div>
 
 </div>
 
-<button class="b">Вгору</button>
-<button class="b">Вниз</button>
+<button class="b" id="b1">Вгору</button>
+<button class="b" id="b2">Вниз</button>
 
 
 <script>
+const b1 = document.getElementById("b1");
+const b2 = document.getElementById("b2");
 
+const lift = document.getElementById("lift");
+
+const lNow = 0;
+
+b1.addEventListener("click", function(){
+	lift.style.bottom = 100 + "px";
+});
+
+b2.addEventListener("click", function(){
+
+});
 
 </script>
 
