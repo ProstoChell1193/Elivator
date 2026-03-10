@@ -20,7 +20,7 @@ body{
 	align-items: center;
 	position: relative;
 	width: 200px;
-	height: 400px;
+	height: 420px;
 	background-color: lightgrey;
 	border: solid 3px black;
 }
@@ -55,7 +55,7 @@ body{
 
 <div id="cave">
 
-	<div id="lift"></div>
+	<div id="lift"><p id="poverh">1</p></div>
 
 </div>
 
@@ -66,18 +66,40 @@ body{
 <script>
 const b1 = document.getElementById("b1");
 const b2 = document.getElementById("b2");
+const poverh = document.getElementById("poverh")
+
+let audlift = new Audio();
+audlift.src="liftik.mp3";
 
 const lift = document.getElementById("lift");
 
 const lNow = 0;
 
+let up = 0;
+
+let pov = 1;
+
 b1.addEventListener("click", function(){
-	lift.style.bottom = 100 + "px";
+	if (up < 320){
+		lift.style.bottom = up + 80 + "px";
+		up = up + 80;
+		pov = pov + 1;
+		poverh.textContent=pov;
+		audlift.play();
+	};
 });
 
 b2.addEventListener("click", function(){
-
+	if (up > 0){
+		lift.style.bottom = up - 80 + "px";
+		up = up - 80;
+		pov = pov - 1;
+		poverh.textContent=pov;
+		audlift.play();
+	};
 });
+
+
 
 </script>
 
